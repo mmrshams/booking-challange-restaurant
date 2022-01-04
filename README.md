@@ -1,2 +1,3 @@
-# booking-challange-restaurant
-here is some test for restaurant booking challang
+# booking-challenge-restaurant
+
+Here is some test for restaurant booking challenge

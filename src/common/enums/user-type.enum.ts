@@ -1,0 +1,6 @@
+export enum UserStatus {
+  INITIATED = "INITIATED",
+  ACTIVE = "ACTIVE",
+  DELETED = "DELETED",
+  EXPIRED_ACCOUNT = "EXPIRED_ACCOUNT",
+}

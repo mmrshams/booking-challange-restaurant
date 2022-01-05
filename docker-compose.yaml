@@ -1,0 +1,35 @@
+version: '3.3'
+services:
+  # ---------------------------------------------
+  # User Service  
+  # Note: "for running all services with docker-compose i suggest to use serviceMode ALL"
+  # "but we need add env for port on docker.file and export all related port that need to be used as exported API"
+  # ---------------------------------------------
+  osiris_mono_user:
+    build:
+      context: ./
+    container_name: osiris_mono_user
+    ports:
+      - '3003:3003'
+    networks:
+      - osiris_mono
+  # ---------------------------------------------
+  # MongoDB
+  # ---------------------------------------------
+  osiris_mono_mongodb:
+    build:
+      context: ./local-setup/docker-files/mongodb
+    container_name: osiris_mono_mongodb
+    ports:
+      - '27017:27017'
+    volumes:
+      - mongodb_data_container:/data/db
+    networks:
+      - osiris_mono
+
+networks:
+  osiris_mono:
+    driver: bridge
+
+volumes:
+  mongodb_data_container:

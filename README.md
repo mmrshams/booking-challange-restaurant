@@ -51,12 +51,13 @@ yarn start:dev
 
 # For run project with docker.file
 
-# build
+# build docker image
  docker build .
-# For see the list of containers  
- docker ps -a 
+ docker build . -t tag-name
+# For see the list of images  
+ docker images -a 
 # run
- docker run containerId 
+ docker run (imageId / tag-name ...  )
 
 # For run with Docker-compose
  docker-compose up

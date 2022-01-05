@@ -23,6 +23,9 @@ it means only some specific number of nest.js modules will run per instance
 
 about why Nest.js, easy to use instead of preparing clean boilerplate
 
+## Flow of implementation:
+ you can see the progress of implementation on related "tasks" if 
+ they were done on "github issues" tab (it may some designed parts are not completed!)
 
 ## Documentation:
 

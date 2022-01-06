@@ -10,12 +10,12 @@ import {
 import { ApiTags } from "@nestjs/swagger";
 import { User } from "@sentry/node";
 import { UserInterface } from "src/common/interfaces/user.interface";
-import { UserService } from "./user.service";
+import { AdminGatewayService } from "./admin-gateway.service";
 
-@ApiTags("User")
-@Controller("users/v1")
-export class UserController {
-  constructor(private readonly userService: UserService) {}
+@ApiTags("AdminGateway")
+@Controller("admin-gateway/v1")
+export class AdminGatewayController {
+  constructor(private readonly userService: AdminGatewayService) {}
 
   @Post("/")
   async create(@Body() body: UserInterface): Promise<User | null> {

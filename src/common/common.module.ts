@@ -1,15 +1,7 @@
 import { DynamicModule, Module } from "@nestjs/common";
 import { ConfigModule, ConfigService } from "@nestjs/config";
-
 import { Config } from "./interfaces/config.interface";
 import { validate } from "./utils/class-validator.util";
-
-// import { support as fluentSupport } from 'fluent-logger';
-
-// import {LoggerService} from './utils/logger.util';
-
-// const fluentWinstonTransport = fluentSupport.winstonTransport();
-// const configFluent = {};
 
 const configFactory = {
   provide: "Config",

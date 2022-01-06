@@ -5,7 +5,7 @@ import { UserInterface } from "src/common/interfaces/user.interface";
 import { DogRepository } from "src/common/repositories/dog.repository";
 import { UserRepository } from "src/common/schemas/user.entity";
 @Injectable()
-export class UserService {
+export class AdminGatewayService {
   constructor(
     private readonly config: Config,
     private readonly userRepository: UserRepository,

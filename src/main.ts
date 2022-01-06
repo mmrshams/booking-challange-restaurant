@@ -6,16 +6,27 @@ import {
 import { NestFactory, Reflector } from "@nestjs/core";
 import { DocumentBuilder, SwaggerModule } from "@nestjs/swagger";
 import { ServiceOptions } from "src/common/interfaces/dynamic-module.interface";
+import { AdminGatewayModule } from "./admin-gateway/admin-gateway.module";
 
 import { CommonModule } from "./common/common.module";
 import { ServiceMode } from "./common/enums/service-mode.enum";
 import { Config } from "./common/interfaces/config.interface";
-import { MainModule } from "./main.module";
+import { InventoryModule } from "./inventory/inventory.module";
+import { ReservationModule } from "./reservation/reservation.module";
 
+/** 
+ * NOTE:
+   * On the line 28 we read the related config and then we can run only 
+   * Specific instance of the modules 
+   * This will be really useful and compatible with nest structure and 
+   * Easy use for common modules per service
+   * @Module Here we can control which module can run per instance
+   */
 const modules: { [key: string]: any } = {
-  [ServiceMode.USER]: [MainModule],
-  [ServiceMode.ALL]: [MainModule],
-  // add more service like  ORDER
+  [ServiceMode.INVENTORY]: [InventoryModule],
+  [ServiceMode.RESERVATION]: [ReservationModule],
+  [ServiceMode.ADMIN_GATEWAY]: [AdminGatewayModule],
+  [ServiceMode.ALL]: [InventoryModule, ReservationModule, AdminGatewayModule],
 };
 
 async function bootstrap() {
@@ -41,7 +52,7 @@ async function bootstrap() {
     }
     const app = await NestFactory.createMicroservice(moduleInstance, options);
     app.enableShutdownHooks();
-    app.listen(() => {});
+    app.listen(() => { });
   }
 }
 bootstrap();

@@ -1,0 +1,134 @@
+{
+	"info": {
+		"_postman_id": "1e37bd3f-3d33-4657-8204-b6a259d5723c",
+		"name": "Restaurnt-coding-challange",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "inventory",
+			"item": [
+				{
+					"name": "create table",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"floor\": \"one\",\n    \"position\": \"A2\",\n    \"capacity\": 4\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3003/inventory/v1/table",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3003",
+							"path": [
+								"inventory",
+								"v1",
+								"table"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create reservation setting",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"startWorkingTime\": \"9:00\",\n    \"endWorkingTime\": \"22:00\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3003/inventory/v1/reservationSetting",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3003",
+							"path": [
+								"inventory",
+								"v1",
+								"reservationSetting"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "reservation",
+			"item": [
+				{
+					"name": "create reservation",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"tableId\": \"table ID\",\n    \"bookedTime\": \"12:00\",\n    \"customerInfo\": {\n        \"count\": 4,\n        \"phoneNumber\": \"012939218371\",\n        \"fullName\": \"omid-shams\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3004/reservation/v1/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3004",
+							"path": [
+								"reservation",
+								"v1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get reservation with id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3004/reservation/v1/2312",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3004",
+							"path": [
+								"reservation",
+								"v1",
+								"2312"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "admin-gateway",
+			"item": []
+		}
+	]
+}

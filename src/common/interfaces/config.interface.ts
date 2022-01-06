@@ -6,13 +6,19 @@ export class Config {
   }
 
   @(joi.string().required())
-  readonly USER_MONGODB_URI!: string;
+  readonly INVENTORY_MONGODB_URI!: string;
 
   @(joi.string().required())
-  readonly DOG_MONGODB_URI!: string;
+  readonly RESERVATION_MONGODB_URI!: string;
 
   @(joi.string().required())
-  readonly USER_URI!: string;
+  readonly INVENTORY_URI!: string;
+
+  @(joi.string().required())
+  readonly RESERVATION_URI!: string;
+
+  @(joi.string().required())
+  readonly ADMIN_GATEWAY_URI!: string;
 
   @(joi.string().required())
   readonly SERVICE_MODE!: string;

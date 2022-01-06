@@ -1,23 +1,28 @@
 import { Injectable } from "@nestjs/common";
+import * as uuid from "uuid"
 import _ from "lodash";
 import { Config } from "src/common/interfaces/config.interface";
-import { UserInterface } from "src/common/interfaces/user.interface";
-import { DogRepository } from "src/common/repositories/dog.repository";
-import { UserRepository } from "src/common/schemas/user.entity";
+import { ReservationInterface } from "src/common/interfaces/reservations.interface";
+import { ReservationRepository } from "src/common/repositories/reservation.repository";
+
 @Injectable()
 export class ReservationService {
   constructor(
     private readonly config: Config,
-    private readonly userRepository: UserRepository,
-    private readonly dogRepository: DogRepository
-  ) {}
-  async create(data: UserInterface): Promise<any> {
-    await this.dogRepository.createOne({ name: "some specific dog name" });
-    return this.userRepository.create(data);
+    private readonly reservationRepository: ReservationRepository,
+  ) { }
+  async create(data: ReservationInterface): Promise<any> {
+    const refUuid = uuid.v4();
+    await this.reservationRepository.createOne({
+      ...data, 
+      uuid:  refUuid, 
+      createdAt: new Date(), 
+      updatedAt: new Date()
+    });
+    return  this.reservationRepository.findOne({ uuid: refUuid });
   }
-  async delete(id: string, data: UserInterface): Promise<any> {}
-  async update(id: string, data: UserInterface): Promise<any> {}
-  async get(): Promise<any> {
-    return { Id: 123, name: "boilerplate" };
+  async get(id: string): Promise<any> {
+    const reservation = await this.reservationRepository.findOne({ uuid: id });
+    return reservation
   }
 }

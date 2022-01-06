@@ -4,12 +4,11 @@ import {
   Get,
   HttpException,
   HttpStatus,
-  Param,
   Post,
 } from "@nestjs/common";
 import { ApiTags } from "@nestjs/swagger";
 import { User } from "@sentry/node";
-import { UserInterface } from "src/common/interfaces/user.interface";
+import { TableInterface } from "src/common/interfaces/table.interface";
 import { AdminGatewayService } from "./admin-gateway.service";
 
 @ApiTags("AdminGateway")
@@ -18,7 +17,7 @@ export class AdminGatewayController {
   constructor(private readonly userService: AdminGatewayService) {}
 
   @Post("/")
-  async create(@Body() body: UserInterface): Promise<User | null> {
+  async create(@Body() body: TableInterface): Promise<User | null> {
     const result = await this.userService.create(body);
     if (!result)
       throw new HttpException(

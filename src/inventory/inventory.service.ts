@@ -1,23 +1,41 @@
 import { Injectable } from "@nestjs/common";
 import _ from "lodash";
 import { Config } from "src/common/interfaces/config.interface";
-import { UserInterface } from "src/common/interfaces/user.interface";
-import { DogRepository } from "src/common/repositories/dog.repository";
-import { UserRepository } from "src/common/schemas/user.entity";
+import { ReservationSettingInterface } from "src/common/interfaces/restaurantSetting.interface";
+import { TableInterface } from "src/common/interfaces/table.interface";
+import { ReservationSettingRepository } from "src/common/repositories/reservationSetting.repository copy";
+import { TableRepository } from "src/common/repositories/table.repository";
+import * as uuid from "uuid";
 @Injectable()
 export class InventoryService {
   constructor(
+    /** 
+     * NOTE:
+     * injected configs
+     */
     private readonly config: Config,
-    private readonly userRepository: UserRepository,
-    private readonly dogRepository: DogRepository
-  ) {}
-  async create(data: UserInterface): Promise<any> {
-    await this.dogRepository.createOne({ name: "some specific dog name" });
-    return this.userRepository.create(data);
+    private readonly reservationSettingRepository: ReservationSettingRepository,
+    private readonly tableRepository: TableRepository
+  ) { }
+
+  async createReservationSetting(data: ReservationSettingInterface): Promise<any> {
+    return this.reservationSettingRepository.createOne({ ...data, uuid: uuid.v4() });
+
   }
-  async delete(id: string, data: UserInterface): Promise<any> {}
-  async update(id: string, data: UserInterface): Promise<any> {}
-  async get(): Promise<any> {
-    return { Id: 123, name: "boilerplate" };
+
+  async createTable(data: TableInterface): Promise<any> {
+    return this.tableRepository.createOne({ ...data, uuid: uuid.v4() });
+  }
+
+  async getTable(): Promise<any> {
+    /** 
+     * NOTE:
+     * pagination and limit per request is completely supported
+     * just need to add on controller and ...
+     */
+    const list = await this.tableRepository.findAll(0, 100, {})
+    return {
+      list, total: list.length
+    };
   }
 }

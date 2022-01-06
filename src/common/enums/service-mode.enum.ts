@@ -1,4 +1,6 @@
 export enum ServiceMode {
-  USER = "USER",
+  INVENTORY = "INVENTORY",
+  RESERVATION = "RESERVATION",
+  ADMIN_GATEWAY = "ADMIN_GATEWAY",
   ALL = "ALL",
 }

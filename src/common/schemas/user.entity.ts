@@ -2,11 +2,14 @@ import { Injectable, NotFoundException } from "@nestjs/common";
 import { InjectModel, Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { Document, FilterQuery, Model } from "mongoose";
 const { ObjectId } = require("mongodb");
+import { TableInterface } from "../interfaces/table.interface";
 
-import { UserInterface } from "../interfaces/user.interface";
-import { find } from "lodash";
-
-export class Setting {}
+/** 
+ * NOTE:
+   * this is just a sample of using mongoose , 
+   * and we do not use this entity and pattern !!
+   */
+export class Setting { }
 export class chargeInterface {
   @Prop({})
   from!: Date;
@@ -71,7 +74,7 @@ export class UserRepository {
   constructor(
     @InjectModel(User.name)
     private readonly UserDao: Model<User>
-  ) {}
+  ) { }
 
   async findAll(
     skip: number,
@@ -114,7 +117,7 @@ export class UserRepository {
     return userEntity.save();
   }
 
-  async update(id: string, user: Partial<UserInterface>): Promise<User | null> {
+  async update(id: string, user: Partial<TableInterface>): Promise<User | null> {
     return this.UserDao.findByIdAndUpdate(
       id,
       { $set: { ...((user as unknown) as User), updatedAt: new Date() } },

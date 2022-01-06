@@ -16,6 +16,7 @@ import {
 
 import { MongodbAdapter } from "./mongodb.adapter";
 
+
 @Injectable()
 export abstract class BaseRepository<T>
   extends MongodbAdapter

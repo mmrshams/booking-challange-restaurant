@@ -14,4 +14,6 @@ RUN yarn install
 RUN yarn build
 
 EXPOSE 3003
+EXPOSE 3004
+EXPOSE 3005
 CMD ["node", "dist/main.js"]

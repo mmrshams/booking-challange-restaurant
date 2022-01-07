@@ -5,18 +5,26 @@ services:
   # Note: "for running all services with docker-compose i suggest to use serviceMode ALL"
   # "but we need add env for port on docker.file and export all related port that need to be used as exported API"
   # ---------------------------------------------
-  osiris_mono_user:
+  # please make sure about change database connection querystring before using docker-compose
+  # you need to change env > local.env
+  # ---------------------------------------------
+  # in advance mode we can change pass variable to docker for example process.env_mode = DEV_DOCKER
+  # and then add e specific envs for docker on local
+  # ---------------------------------------------
+  booking_mono_all_services:
     build:
       context: ./
     container_name: osiris_mono_user
     ports:
       - '3003:3003'
+      - '3004:3004'
+      - '3005:3005'
     networks:
       - osiris_mono
   # ---------------------------------------------
   # MongoDB
   # ---------------------------------------------
-  osiris_mono_mongodb:
+  booking_mono_mongodb:
     build:
       context: ./local-setup/docker-files/mongodb
     container_name: osiris_mono_mongodb

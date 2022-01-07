@@ -80,7 +80,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"tableId\": \"table ID\",\n    \"bookedTime\": \"12:00\",\n    \"customerInfo\": {\n        \"count\": 4,\n        \"phoneNumber\": \"012939218371\",\n        \"fullName\": \"omid-shams\"\n    }\n}",
+							"raw": "{\n    \"tableId\": \"table ID\",\n    \"bookedTime\": \"13:00\",\n    \"customerInfo\": {\n        \"count\": 4,\n        \"phoneNumber\": \"012939218371\",\n        \"fullName\": \"omid-shams\"\n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -128,7 +128,120 @@
 		},
 		{
 			"name": "admin-gateway",
-			"item": []
+			"item": [
+				{
+					"name": "get reservation with id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3005/admin-gateway/v1/reservation/d58c071a-1123-4765-8285-0b9609400be5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"admin-gateway",
+								"v1",
+								"reservation",
+								"d58c071a-1123-4765-8285-0b9609400be5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create reservation",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"tableId\": \"table ID\",\n    \"bookedTime\": \"15:00\",\n    \"customerInfo\": {\n        \"count\": 4,\n        \"phoneNumber\": \"012939218371\",\n        \"fullName\": \"omid-shams\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3005/admin-gateway/v1/create-reservation",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"admin-gateway",
+								"v1",
+								"create-reservation"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create table",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"floor\": \"one\",\n    \"position\": \"A2\",\n    \"capacity\": 4\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3005/admin-gateway/v1/create-table",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"admin-gateway",
+								"v1",
+								"create-table"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create reservation setting",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"startWorkingTime\": \"9:00\",\n    \"endWorkingTime\": \"22:00\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3005/admin-gateway/v1/create-reservation-setting",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"admin-gateway",
+								"v1",
+								"create-reservation-setting"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }

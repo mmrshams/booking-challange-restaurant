@@ -49,6 +49,10 @@ yarn install
 # For easy run the project
 yarn start:dev 
 
+# Postman exported Json added you can import the file 
+# that exists in root of project
+"Restaurnt-coding-challange.postman_collection.json"
+
 # For run project with docker.file
 
 # build docker image

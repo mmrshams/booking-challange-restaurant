@@ -18,6 +18,12 @@ export class Config {
   readonly RESERVATION_URI!: string;
 
   @(joi.string().required())
+  readonly HTTP_INVENTORY_URI!: string;
+
+  @(joi.string().required())
+  readonly HTTP_RESERVATION_URI!: string;
+
+  @(joi.string().required())
   readonly ADMIN_GATEWAY_URI!: string;
 
   @(joi.string().required())
